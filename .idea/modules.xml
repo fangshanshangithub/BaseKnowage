@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BaseKnowage.iml" filepath="$PROJECT_DIR$/.idea/BaseKnowage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fangss-blog/fangss-blog.iml" filepath="$PROJECT_DIR$/fangss-blog/fangss-blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fangss-blog_main.iml" filepath="$PROJECT_DIR$/.idea/modules/fangss-blog_main.iml" group="fangss-blog" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fangss-blog_test.iml" filepath="$PROJECT_DIR$/.idea/modules/fangss-blog_test.iml" group="fangss-blog" />
+      <module fileurl="file://$PROJECT_DIR$/fangss-utils/fangss-utils.iml" filepath="$PROJECT_DIR$/fangss-utils/fangss-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fangss-utils_main.iml" filepath="$PROJECT_DIR$/.idea/modules/fangss-utils_main.iml" group="fangss-utils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fangss-utils_test.iml" filepath="$PROJECT_DIR$/.idea/modules/fangss-utils_test.iml" group="fangss-utils" />
+      <module fileurl="file://$PROJECT_DIR$/java-base/java-base.iml" filepath="$PROJECT_DIR$/java-base/java-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-base_main.iml" filepath="$PROJECT_DIR$/.idea/modules/java-base_main.iml" group="java-base" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-base_test.iml" filepath="$PROJECT_DIR$/.idea/modules/java-base_test.iml" group="java-base" />
+    </modules>
+  </component>
+</project>
