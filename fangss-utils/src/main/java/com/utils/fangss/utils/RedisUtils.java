@@ -1,14 +1,3 @@
-/*
- * @author Fang ShanShan (fangshanshan@artron.net)
- *
- * CreatAt: 2018/12/12 Time: 下午3:04
- *
- * Copyright (c) 2000-2018. http://www.artron.net. All rights reserved.
- *
- * Use of this source code is governed a license that can be found in the LICENSE file.
- *
- */
-
 package com.utils.fangss.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
