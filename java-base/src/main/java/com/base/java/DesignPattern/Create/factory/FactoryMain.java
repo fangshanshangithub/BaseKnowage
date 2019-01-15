@@ -1,5 +1,11 @@
 package com.base.java.DesignPattern.Create.factory;
 
+/**
+ * 工厂模式
+ * 产品类 实现公用的接口
+ * 工厂类 获取产品
+ * 产品 - 工厂 n ：1
+ */
 public class FactoryMain {
 
     public static void main(String[] args) {
@@ -32,6 +38,7 @@ class Factory{
 }
 
 
+// 公用 产品接口
 interface  Product{
     void init();
 }
