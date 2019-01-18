@@ -12,16 +12,38 @@ public class ProducterConsumerThread {
     // 生产者生产产品 -- 使用synchronized 方法是由于productCount共享资源 不能同时被生产者+，消费者-，2者要互斥
     public synchronized void createProduct() {
 
-        productCount ++;
-        System.out.println("生产者生产1件产品，当前产品有：" + productCount);
+        if(productCount < 1) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            productCount ++;
+            System.out.println("生产者生产1件产品，当前产品有：" + productCount);
+            notifyAll();
+        }
 
     }
 
     // 消费者消费产品
     public synchronized void useProduct() {
 
-        productCount --;
-        System.out.println("消费者消费1件产品，当前产品有：" + productCount);
+        if(productCount < 1) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            productCount --;
+            System.out.println("消费者消费1件产品，当前产品有：" + productCount);
+            notifyAll();
+        }
+
+
     }
 
     public static void main(String[] args) {
@@ -52,12 +74,7 @@ class Producter implements Runnable {
 
     @Override
     public void run() {
-
-        if(pcer.productCount < 15) {
-
-            pcer.createProduct();
-            notifyAll();
-        }
+        pcer.createProduct();
     }
 }
 
@@ -73,16 +90,7 @@ class Consumer implements Runnable {
     @Override
     public void run() {
         for(int i = 1; i < 50; i++) {
-            if(pcer.productCount < 1) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            else {
                 pcer.useProduct();
-            }
 
         }
     }
