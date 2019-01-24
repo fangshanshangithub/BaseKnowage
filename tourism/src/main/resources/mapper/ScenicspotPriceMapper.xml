@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tourism.project.mapper.ScenicspotPriceMapper">
+  <resultMap id="BaseResultMap" type="com.tourism.project.entity.ScenicspotPrice">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="scenicspot_name" jdbcType="VARCHAR" property="scenicspotName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from scenicspot_price
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tourism.project.entity.ScenicspotPrice">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into scenicspot_price (scenicspot_name, price, create_user, 
+      create_time, update_user, update_time
+      )
+    values (#{scenicspotName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.tourism.project.entity.ScenicspotPrice">
+    update scenicspot_price
+    set scenicspot_name = #{scenicspotName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, scenicspot_name, price, create_user, create_time, update_user, update_time
+    from scenicspot_price
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, scenicspot_name, price, create_user, create_time, update_user, update_time
+    from scenicspot_price
+  </select>
+</mapper>
