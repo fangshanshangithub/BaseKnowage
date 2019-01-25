@@ -11,7 +11,7 @@ public class PageController {
 
     @RequestMapping(value = "/")
     public String index() {
-       return "index";
+       return "twts_template/index";
     }
 
 

@@ -3,10 +3,12 @@ package com.tourism.project.entity.vo;
 import com.tourism.project.constant.JsonResponseConstant;
 import org.springframework.util.StringUtils;
 
+import java.io.Serializable;
+
 /**
  * 通用返回页面json数据
  */
-public class JsonResponse<T> {
+public class JsonResponse<T> implements Serializable {
 
     private Integer code;
 
