@@ -7,16 +7,46 @@ import java.util.Arrays;
  */
 public class SortMain {
     public static void main(String[] args) {
-        int[] values = {12,32,53,22,35,21,56,3,6,324};
+        int[] values = {12,32,53,22,35,21,56,3,6,324,1};
         System.out.println("排序后" + Arrays.toString(values));
 
         //bubbleSort(values);
         //selectionSort(values);
-        insertSort(values);
-
+        //insertSort(values);
+        shellSort(values);
 
         System.out.println("排序后" + Arrays.toString(values));
 
+
+    }
+
+    /**
+     * 希尔排序
+     *
+     * @param values
+     */
+    private static void shellSort(int[] values) {
+        int len = values.length;
+        int temp;
+        int grep = len/2; //增量
+
+        while(grep > 0) {
+
+            for(int i = grep; i < len; i++) {
+                temp = values[i];
+                int  pindex = i - grep;
+
+                while (pindex >=0 && values[pindex] > temp) {
+                    values[pindex + grep] = values[pindex];
+                    pindex -= grep;
+                }
+
+                values[pindex + grep] = temp;
+
+            }
+            grep /= 2;
+
+        }
 
     }
 
@@ -60,6 +90,7 @@ public class SortMain {
             values[i] = values[minIndex];
             values[minIndex] = temp;
 
+            System.out.println(i + " -- " + Arrays.toString(values));
 
         }
 
@@ -74,7 +105,7 @@ public class SortMain {
 
         System.out.println("SortMain.sortOne: 冒泡排序");
 
-        for(int i = 0; i < values.length; i++) { // 第一个循环 比较 n-1 次
+        for(int i = 0; i < values.length - 1; i++) { // 第一个循环 比较 n-1 次
 
             int tme;
             for(int j = 0 ; j < values.length - i -1; j++) { // 第二个循环表n-i-1次
@@ -86,7 +117,10 @@ public class SortMain {
 
                 }
 
+
             }
+
+            System.out.println(i + " -- " + Arrays.toString(values));
 
         }
     }

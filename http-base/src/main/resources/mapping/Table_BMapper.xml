@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.httpbase.httpbase.mapper.Table_BMapper">
+  <resultMap id="BaseResultMap" type="com.httpbase.httpbase.entity.Table_B">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="bname" jdbcType="VARCHAR" property="bname" />
+    <result column="bage" jdbcType="INTEGER" property="bage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bname, bage
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from table_b
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from table_b
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.httpbase.httpbase.entity.Table_B">
+    insert into table_b (id, bname, bage
+      )
+    values (#{id,jdbcType=BIGINT}, #{bname,jdbcType=VARCHAR}, #{bage,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.httpbase.httpbase.entity.Table_B">
+    insert into table_b
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bname != null">
+        bname,
+      </if>
+      <if test="bage != null">
+        bage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="bname != null">
+        #{bname,jdbcType=VARCHAR},
+      </if>
+      <if test="bage != null">
+        #{bage,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.httpbase.httpbase.entity.Table_B">
+    update table_b
+    <set>
+      <if test="bname != null">
+        bname = #{bname,jdbcType=VARCHAR},
+      </if>
+      <if test="bage != null">
+        bage = #{bage,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.httpbase.httpbase.entity.Table_B">
+    update table_b
+    set bname = #{bname,jdbcType=VARCHAR},
+      bage = #{bage,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from table_b
+  </select>
+
+
+  <update id="truncateAll">
+     truncate table table_b
+  </update>
+
+
+
+</mapper>

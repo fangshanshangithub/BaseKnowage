@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trans_index</title>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body text-align="center">
+
+
+<div style="margin:0 auto">
+    <input type="button" onclick="truncateData();"  value="清空表数据"><lable id="truncateDate"></lable><br/>
+    <div style="float:left;width:50%;">
+        TableA:
+        <table>
+            <tr>
+                <td>id:</td>
+                <td><input id="aid" name="aid" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td>name:</td>
+                <td><input id="aname" name="aname" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td>age:</td>
+                <td><input id="aage" name="aage" type="text"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="float:left;width:50%;">
+        TableB:
+        <table>
+            <tr>
+                <td>id:</td>
+                <td><input id="bid" name="bid" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td>name:</td>
+                <td><input id="bname" name="bname" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td>age:</td>
+                <td><input id="bage" name="bage" type="text"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <input type="button" value="非事务方法相互调用" onclick="noAnno();"><label id="noAnno"></label>
+
+</div>
+
+<script>
+    function truncateData() { // 清空A,B表的数据
+        $.ajax({
+            type:"POST",
+            url: "trans/truncate",
+            data:{},
+            dataType: "text",
+            success: function(data){
+                //alert(data);
+                $("#truncateDate").html(data);
+            }
+        });
+    }
+
+    function noAnno() { // 清空A,B表的数据
+        $.ajax({
+            type:"POST",
+            url: "trans/trans_01",
+            contentType: "application/json",//如果想以json格式把数据提交到后台的话，这个必须有，否则只会当做表单提交
+            data:JSON.stringify({
+                "ta.id" : $("#aid").val(),
+                "ta.aname" : $("#aname").val(),
+                "ta.aage" : $("#aage").val(),
+
+                "tb.id" : $("#bid").val(),
+                "tb.bname" : $("#bname").val(),
+                "tb.bage" : $("#bage").val()
+            }),
+            success: function(data){
+                alert(data);
+                $("#noAnno").html(data);
+            }
+        });
+    }
+
+
+</script>
+
+</body>
+</html>
